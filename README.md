@@ -15,7 +15,7 @@ Here’s a **ready-to-use GitHub Pages** project that lets people search and dow
 
 ## 📦 Folder Structure
 /index.html → Main search page
-/script.js → Handles searching & displaying certificates
+/script.js → Handles searching & displaying certificates 
 /style.css → Optional styling
 /certificates/ → All certificate images go here
 /certificates.json → List of all certificate filenames
