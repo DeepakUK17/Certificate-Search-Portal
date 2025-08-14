@@ -33,7 +33,17 @@ async function searchCertificates() {
 
             resultsDiv.appendChild(img);
             resultsDiv.appendChild(document.createElement("br"));
-            resultsDiv.appendChild(link);
+            const button = document.createElement("button");
+            button.innerText = `Download ${file}`;
+            button.onclick = () => {
+                const a = document.createElement("a");
+                a.href = `certificates/${file}`;
+                a.download = file;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
+            resultsDiv.appendChild(button);
             resultsDiv.appendChild(document.createElement("hr"));
         });
 
