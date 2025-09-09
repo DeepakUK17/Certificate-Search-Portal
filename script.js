@@ -1,12 +1,10 @@
-let certificateCache = null; // ✅ cache JSON after first fetch
-
 async function searchCertificates() {
     const teamId = document.getElementById("teamId").value.trim();
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = "";
 
     if (!teamId) {
-        resultsDiv.innerHTML = "<p>Please select a team ID.</p>";
+        resultsDiv.innerHTML = "<p>Please enter a Team ID.</p>";
         return;
     }
 
@@ -25,8 +23,11 @@ async function searchCertificates() {
 
         matches.forEach(file => {
             const button = document.createElement("button");
-            button.innerText = `Download ${file}`;
+            // extract name after teamID_
+            const displayName = file.split("_")[1]?.replace(".png", "") || file;
+            button.innerText = `Download: ${displayName}`;
             button.style.margin = "10px";
+
             button.onclick = () => {
                 const a = document.createElement("a");
                 a.href = `certificates/${file}`;
@@ -35,6 +36,7 @@ async function searchCertificates() {
                 a.click();
                 document.body.removeChild(a);
             };
+
             resultsDiv.appendChild(button);
             resultsDiv.appendChild(document.createElement("br"));
         });
